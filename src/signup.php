@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-    <img src="WINE.svg" alt="logo" class="logo">
+    <img src="https://gong-cha.github.io/WINE.svg" alt="logo" class="logo">
     <form method="post">
         <label>
             <input type="text" name="name" maxlength="255" placeholder="名前" autocomplete="name" autofocus>
