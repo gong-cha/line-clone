@@ -28,5 +28,5 @@ while (!connection_aborted()) {
         ob_end_flush();
     }
     flush();
-    usleep(100000);
+    sleep(1);
 }

@@ -151,7 +151,7 @@ DB::set_is_read($_GET['receiver_user_id'], $_SESSION['user_id']);
             addEventListener('beforeunload', () => es.close())
             addEventListener('unload', () => es.close())
             addEventListener('close', () => es.close())
-        }, 1000)
+        }, <?php echo php_sapi_name() === 'cli-server' ? 10000000 : 1000; ?>)
     </script>
     <?php if (isset($error_message)) : ?>
         <div><?php echo $error_message; ?></div>
