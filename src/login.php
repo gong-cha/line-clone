@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-    <img src="WINE.svg" alt="logo" class="logo">
+    <img src="https://gong-cha.github.io/WINE.svg" alt="logo" class="logo">
     <?php if ($_SERVER['REQUEST_METHOD'] === 'POST') : ?>
         ログインできませんでした。
     <?php endif; ?>
