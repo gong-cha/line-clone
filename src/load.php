@@ -3,10 +3,10 @@
 // localhostを使うと遅くなります。127.0.0.1を使ってください。
 // See: https://stackoverflow.com/a/9800798/5602117
 // https://www.phpmyadmin.co/index.php?db=sql12650040&target=db_structure.php
-const DB_HOST = 'sql12.freemysqlhosting.net';
-const DB_USERNAME = 'sql12650040';
-const DB_PASSWORD = 'qUhFDwRMSf';
-const DB_DATABASE = 'sql12650040';
+const DB_HOST = 'aws.connect.psdb.cloud';
+const DB_USERNAME = 'cymx970kdtb11cf2jjzp';
+const DB_PASSWORD = 'pscale_pw_jEKge1JOuiheo5L2H9cdAR2LVeihBEMCSVeQw5806zA';
+const DB_DATABASE = 'line';
 
 class DB
 {
@@ -16,7 +16,10 @@ class DB
     {
         if (empty(self::$pdo)) {
             try {
-                $options = [PDO::MYSQL_ATTR_INIT_COMMAND => "SET time_zone='+09:00'"];
+                $options = [
+                    // PDO::MYSQL_ATTR_SSL_CA => "/etc/ssl/certs/ca-certificates.crt", // for PlanetScale
+                    PDO::MYSQL_ATTR_INIT_COMMAND => "SET time_zone='+09:00'"
+                ];
                 self::$pdo = new PDO("mysql:host=" . DB_HOST . ';port=3306;dbname=' . DB_DATABASE . ';charset=utf8mb4', DB_USERNAME, DB_PASSWORD, $options);
             } catch (PDOException $error) {
                 echo $error->getMessage();

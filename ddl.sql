@@ -26,3 +26,16 @@ CREATE TABLE IF NOT EXISTS message
         REFERENCES user(user_id)
         ON DELETE CASCADE
 );
+
+-- for PlanetScale
+-- CREATE TABLE IF NOT EXISTS message
+-- (
+--     message_id       INT NOT NULL AUTO_INCREMENT,
+--     message          VARCHAR(255),
+--     filepath         VARCHAR(255),
+--     sender_user_id   INT NOT NULL,
+--     receiver_user_id INT NOT NULL,
+--     is_read          BOOLEAN,
+--     created_at       TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+--     PRIMARY KEY (message_id)
+-- );
