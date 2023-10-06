@@ -1,12 +1,17 @@
 <?php
 
-// localhostを使うと遅くなります。127.0.0.1を使ってください。
-// See: https://stackoverflow.com/a/9800798/5602117
-// https://www.phpmyadmin.co/index.php?db=sql12650040&target=db_structure.php
-const DB_HOST = 'aws.connect.psdb.cloud';
-const DB_USERNAME = 'cymx970kdtb11cf2jjzp';
-const DB_PASSWORD = 'pscale_pw_jEKge1JOuiheo5L2H9cdAR2LVeihBEMCSVeQw5806zA';
-const DB_DATABASE = 'line';
+if (file_exists('dotenv.php')) {
+    require_once('dotenv.php');
+} else {
+
+    // localhostを使うと遅くなります。127.0.0.1を使ってください。
+    // See: https://stackoverflow.com/a/9800798/5602117
+    // https://www.phpmyadmin.co/index.php?db=sql12650040&target=db_structure.php
+    define('DB_HOST', 'sql12.freemysqlhosting.net');
+    define('DB_USERNAME', 'sql12650040');
+    define('DB_PASSWORD', 'qUhFDwRMSf');
+    define('DB_DATABASE', 'sql12650040');
+}
 
 class DB
 {
@@ -119,15 +124,15 @@ function get_filepath(): ?string
         $dirname = 'uploads' . DIRECTORY_SEPARATOR . uniqid();
         $filepath = $dirname . DIRECTORY_SEPARATOR . basename($_FILES['file']['name']);
         // データベースのカラムサイズより大きいとき
-        if ( strlen($filepath) > 255 ) {
+        if (strlen($filepath) > 255) {
             return null;
         }
         // ディレクトリの作成に失敗したとき
-        if ( ! mkdir($dirname, 0777, true) ) {
+        if (!mkdir($dirname, 0777, true)) {
             return null;
         }
         // ファイルの移動に失敗したとき
-        if ( ! move_uploaded_file($_FILES['file']['tmp_name'], $filepath) ) {
+        if (!move_uploaded_file($_FILES['file']['tmp_name'], $filepath)) {
             rmdir($dirname);
             return null;
         }
