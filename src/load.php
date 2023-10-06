@@ -3,7 +3,6 @@
 if (file_exists('dotenv.php')) {
     require_once('dotenv.php');
 } else {
-
     // localhostを使うと遅くなります。127.0.0.1を使ってください。
     // See: https://stackoverflow.com/a/9800798/5602117
     // https://www.phpmyadmin.co/index.php?db=sql12650040&target=db_structure.php
