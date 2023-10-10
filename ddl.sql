@@ -19,6 +19,7 @@ CREATE TABLE IF NOT EXISTS message
     is_read          BOOLEAN,
     created_at       TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (message_id),
+    KEY sender_user_id_receiver_user_id (sender_user_id, receiver_user_id),
     FOREIGN KEY (sender_user_id)
         REFERENCES user(user_id)
         ON DELETE CASCADE,
