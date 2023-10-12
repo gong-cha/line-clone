@@ -122,7 +122,7 @@ DB::set_is_read($_GET['receiver_user_id'], $_SESSION['user_id']);
         setTimeout(() => messages.scrollTo(0, messages.scrollHeight), 500)
         requestIdleCallback(() => document.querySelector('[autofocus]').focus())
         setTimeout(() => {
-            const es = new EventSource('events.php?receiver_user_id=<?php echo $_GET['receiver_user_id']; ?>', {
+            const es = new EventSource('sse.php?receiver_user_id=<?php echo $_GET['receiver_user_id']; ?>', {
                 withCredentials: true
             });
             es.addEventListener('message', e => {
@@ -151,7 +151,7 @@ DB::set_is_read($_GET['receiver_user_id'], $_SESSION['user_id']);
             addEventListener('beforeunload', () => es.close())
             addEventListener('unload', () => es.close())
             addEventListener('close', () => es.close())
-        }, <?php echo php_sapi_name() === 'cli-server' ? 10000000 : 1000; ?>)
+        }, <?php echo php_sapi_name() === 'cli-server' ? 1000 : 1000; ?>)
     </script>
     <?php if (isset($error_message)) : ?>
         <div><?php echo $error_message; ?></div>
