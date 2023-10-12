@@ -80,7 +80,7 @@ class DB
 
     static function get_messages($sender_user_id, $receiver_user_id)
     {
-        $stmt = self::getPdo()->prepare('SELECT * FROM message WHERE sender_user_id = :sender_user_id AND receiver_user_id = :receiver_user_id OR sender_user_id = :receiver_user_id AND receiver_user_id = :sender_user_id');
+        $stmt = self::getPdo()->prepare('SELECT * FROM message WHERE sender_user_id = :sender_user_id AND receiver_user_id = :receiver_user_id OR sender_user_id = :receiver_user_id AND receiver_user_id = :sender_user_id ORDER BY message_id');
         $stmt->execute(['sender_user_id' => $sender_user_id, 'receiver_user_id' => $receiver_user_id]);
         return $stmt->fetchAll();
     }
