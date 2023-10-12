@@ -6,10 +6,10 @@ if (file_exists('dotenv.php')) {
     // localhostを使うと遅くなります。127.0.0.1を使ってください。
     // See: https://stackoverflow.com/a/9800798/5602117
     // https://www.phpmyadmin.co/index.php?db=sql12650040&target=db_structure.php
-    define('DB_HOST', 'sql12.freemysqlhosting.net');
-    define('DB_USERNAME', 'sql12650040');
-    define('DB_PASSWORD', 'qUhFDwRMSf');
-    define('DB_DATABASE', 'sql12650040');
+    define('DB_HOST', getenv('DB_HOST') ?: 'sql12.freemysqlhosting.net');
+    define('DB_USERNAME', getenv('DB_USERNAME') ?: 'sql12650040');
+    define('DB_PASSWORD', getenv('DB_PASSWORD') ?: 'qUhFDwRMSf');
+    define('DB_DATABASE', getenv('DB_DATABASE') ?: 'sql12650040');
 }
 
 class DB
