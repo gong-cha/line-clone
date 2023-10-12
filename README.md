@@ -10,7 +10,7 @@ PHP_CLI_SERVER_WORKERS=$(nproc) php -S localhost:8000 -t src
 ```
 
 DB Settings
-https://github.com/gong-cha/line-clone/blob/dcebce7965f13002bcd1d8a9c4acaa06feb1a749/src/load.php#L9-L12
+https://github.com/gong-cha/line-clone/blob/4a65245f2577afb8fef4e580348d84e7f704c930/src/load.php#L9-L12
 
 ![ezgif com-video-to-gif (2)](https://github.com/gong-cha/line-clone/assets/114157917/30902474-1ebc-4bc4-8440-8a454d66b45f)
 
