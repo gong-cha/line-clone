@@ -20,6 +20,10 @@ while (!connection_aborted()) {
     $curDate = $e - $s;
     echo 'data: {"time": "' . $curDate . '"}';
     echo "\n\n";
+    if (php_sapi_name() === 'cgi-fcgi') {
+        // nginxのプロキシバッファ64k対策
+        echo ':' . str_repeat(' ', 1024 * 64) . PHP_EOL . PHP_EOL;
+    }
     if(ob_get_level() > 0) {
         ob_end_flush();
     }
