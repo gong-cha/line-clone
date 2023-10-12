@@ -17,7 +17,7 @@ while (!connection_aborted()) {
     $latest_message = DB::get_latest_message($_GET['receiver_user_id'], $user_id);
     if ($latest_message && $latest_message['message_id'] > $message['message_id']) {
         $message = $latest_message;
-        printf("data: %s\n\n", json_encode($message));
+        echo 'data: ' . json_encode($message) . PHP_EOL . PHP_EOL;
     }
     $milliseconds = floor(microtime(true) * 1000);
     // 10秒おきにpingを送信
