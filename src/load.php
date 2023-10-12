@@ -21,9 +21,12 @@ class DB
         if (empty(self::$pdo)) {
             try {
                 $options = [
-                    // PDO::MYSQL_ATTR_SSL_CA => "/etc/ssl/certs/ca-certificates.crt", // for PlanetScale
                     PDO::MYSQL_ATTR_INIT_COMMAND => "SET time_zone='+09:00'"
                 ];
+                if ( defined('DB_HOST') && strpos(DB_HOST, 'psdb') !== false ) {
+                    // for PlanetScale
+                    $options[PDO::MYSQL_ATTR_SSL_CA] = '/etc/ssl/certs/ca-certificates.crt';
+                }
                 self::$pdo = new PDO("mysql:host=" . DB_HOST . ';port=3306;dbname=' . DB_DATABASE . ';charset=utf8mb4', DB_USERNAME, DB_PASSWORD, $options);
             } catch (PDOException $error) {
                 echo $error->getMessage();
