@@ -1,10 +1,6 @@
 <?php
 header('Content-Type: text/event-stream');
 header('Cache-Control: no-store');
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, PATCH, OPTIONS');
-header('Access-Control-Allow-Headers: X-Requested-With, content-type, Authorization');
-//header('Connection: keep-alive');
 require_once 'load.php';
 session_start();
 $user_id = $_SESSION['user_id'];
@@ -28,5 +24,6 @@ while (!connection_aborted()) {
         ob_end_flush();
     }
     flush();
-    sleep(1);
+    // 0.1秒待機
+    usleep(100000);
 }

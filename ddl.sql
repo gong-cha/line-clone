@@ -38,5 +38,6 @@ CREATE TABLE IF NOT EXISTS message
 --     receiver_user_id INT NOT NULL,
 --     is_read          BOOLEAN,
 --     created_at       TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
---     PRIMARY KEY (message_id)
+--     PRIMARY KEY (message_id),
+--     KEY sender_user_id_receiver_user_id (sender_user_id, receiver_user_id)
 -- );
