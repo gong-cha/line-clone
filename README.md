@@ -6,8 +6,6 @@ LINE Clone Message  App + PHP + MySQL
 ```bash
 php -S localhost:8000 -t src
 
-or
-
 PHP_CLI_SERVER_WORKERS=$(nproc) php -S localhost:8000 -t src
 ```
 
